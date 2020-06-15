@@ -654,9 +654,7 @@ async def processMentions():
     cursor.execute("SELECT mention FROM mentions WHERE processed=%s",(str(0),))
     #get unprocessed mentions from DB
     a=cursor.fetchall()
-    
-    cursor.execute("SELECT mention FROM mentions PARTITION (p1)")
-    a=cursor.fetchall()
+   
     
     #update mentions table in DB
     cursor.execute("UPDATE mentions SET processed =%s WHERE processed =%s",(str(1),str(0)))
