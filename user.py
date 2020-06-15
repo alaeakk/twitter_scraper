@@ -5,6 +5,13 @@ class user:
         pass
 
 def inf(ur, _type):
+    '''
+    
+    :param ur:html input
+    :type ur:
+    :param _type: type of the data: user 
+    :type _type:
+    '''
     try:
         group = ur.find("div", "user-actions btn-group not-following ")
         if group == None:
@@ -106,25 +113,43 @@ def verified(ur):
     return is_verified
 
 def User(ur):
-    
+    #user object
     u = user()
+    #encode emojis images 
     for img in ur.findAll("img", "Emoji Emoji--forText"):
         img.replaceWith(img["alt"])
+    #id of the user 
     u.id = inf(ur, "id")
+    #name of the account's user 
     u.name = inf(ur, "name")
+    #username of the account
     u.username = inf(ur, "username")
+    #account's bio card
     u.bio = card(ur, "bio")
+    #location of user
     u.location = card(ur, "location")
+    #website of the user
     u.url = card(ur, "url")
+    #join date
     u.join_date = join(ur)[1]
+    #join time
     u.join_time = join(ur)[0]
+    #numbe rof tweets 
     u.tweets = stat(ur, "tweets is-active")
+    #number of users followed by the user
     u.following = stat(ur, "following")
+    #number of follwers of the account
     u.followers = stat(ur, "followers")
+    #number of likes
     u.likes = stat(ur, "favorites")
+    #number of media
     u.media_count = media(ur)
+    #is the account private
     u.is_private = inf(ur, "private")
+    #is the account verified
     u.is_verified = verified(ur)
+    #avatar's image url
     u.avatar = ur.find("img", "ProfileAvatar-image")["src"]
+    #background's image url
     u.background_image = ur.find('div',{'class':'ProfileCanopy-headerBg'}).find('img').get('src')
     return u

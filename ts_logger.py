@@ -1,7 +1,7 @@
 import logging
 
 
-logger = logging.getLogger('twitterscraper')
+logger = logging.getLogger('twitter_scrape_socialsearch')
 
 formatter = logging.Formatter('%(levelname)s: %(message)s')
 handler = logging.StreamHandler()

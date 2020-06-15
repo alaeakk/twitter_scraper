@@ -49,8 +49,8 @@ class VideoUrl:
         print(video_host)
         if playlist.is_variant:
             plist=playlist.playlists[0]
-            resolution = str(plist.stream_info.resolution[0]) + 'x' + str(plist.stream_info.resolution[1])
-            resolution_file = Path(self.storage) / Path(resolution + '.mp4')
+            
+            
                 
                 
 
